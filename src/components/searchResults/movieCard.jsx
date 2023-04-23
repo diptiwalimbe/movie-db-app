@@ -12,6 +12,14 @@ export default function MovieCard({ movie }) {
       </div>
       <div>
         <h4>{movie.title}</h4>
+        <button class='more-options-button'>&#x22EE;</button>
+        {/* <div class='select-menu '>
+          <select>
+            <option value='option1'>Option 1</option>
+            <option value='option2'>Option 2</option>
+            <option value='option3'>Option 3</option>
+          </select>
+        </div> */}
         <span>{movie.release_date.split('-')[0]}</span>
         <br />
         <span>Rating: {movie.vote_average}</span>

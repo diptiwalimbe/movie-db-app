@@ -1,12 +1,5 @@
 import axios from 'axios';
-import {
-  API_KEY,
-  BASE_API_URL,
-  BASE_SEARCH_URL,
-  SEARCH_PERSON_URL,
-  DISCOVER_MOVIE_URL,
-  config,
-} from '../constants/util';
+import { SEARCH_PERSON_URL, config } from '../constants/util';
 
 export function getPersonFromLocalStorage(personName) {
   const storedPersons = localStorage.getItem('storedPersons');
@@ -47,18 +40,15 @@ export async function getPerson(person) {
     personResult &&
     personResult[0]?.name?.toLowerCase() === person.toLowerCase()
   ) {
-    console.log('1');
     personResult = personResult[0];
     personResult = new Map(Object.entries(personResult));
   } else {
-    console.log('2');
     personResult = undefined;
     const url = `${SEARCH_PERSON_URL}?query=${encodeURI(person)}`;
     try {
       const resp = await axios.get(url, config);
-      console.log('person:', resp);
+
       if (resp && resp.data.total_results > 0) {
-        console.log('3');
         personResult = new Map();
         personResult.set('id', resp.data.results[0].id);
         personResult.set('name', resp.data.results[0].name);
@@ -69,6 +59,29 @@ export async function getPerson(person) {
       console.log(e);
     }
   }
-  console.log('fnal:', personResult);
+
   return personResult;
+}
+
+export async function getPersonSuggestions(personInput) {
+  const suggestions = new Set();
+  //currently the API cannot filter by known for department
+  const url = `${SEARCH_PERSON_URL}?query=${encodeURI(
+    personInput
+  )}&sort_by=name.desc`;
+  try {
+    const resp = await axios.get(url, config);
+    //need to filter results by department acting to get just the actor suggestions
+    if (resp && resp.data.total_results > 0) {
+      resp.data.results.forEach((p) => {
+        if (p.known_for_department === 'Acting') {
+          suggestions.add(p.name);
+        }
+      });
+    }
+    //return array and not set
+    return [...suggestions];
+  } catch (e) {
+    console.log(e);
+  }
 }
