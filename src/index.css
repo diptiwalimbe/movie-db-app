@@ -47,12 +47,16 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  /* background-color: #1a1a1a; */
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
   border-color: #646cff;
+}
+button:disabled {
+  border-color: #646cff;
+  cursor: auto;
 }
 button:focus,
 button:focus-visible {
@@ -63,13 +67,50 @@ input[type="text"]{
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
+  /* padding-right: 100px; */
   margin: 5px;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  
-  /* cursor: pointer; */
   transition: border-color 0.25s;
+}
+
+/* datalist {
+  position: absolute;
+  border: 1px solid blue;
+  border-radius: 0 0 5px 5px;
+  border-top: none;
+  width: 350px;
+  padding: 5px;
+  max-height: 10rem;
+  overflow-y: auto
+} */
+datalist {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  background-color: #fff;
+  border: 1px solid #dcdcdc;
+  border-top: none;
+  margin-top: -1px;
+  list-style-type: none;
+  padding: 0;
+  width: 298px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+.datalist-arrow{
+  display: none;
+}
+/* Style for the datalist options */
+datalist option {
+  padding: 10px;
+  cursor: pointer;
+}
+
+/* Style for the datalist option when hovered */
+datalist option:hover {
+  background-color: #f2f2f2;
 }
 @media (prefers-color-scheme: light) {
   :root {

@@ -1,13 +1,11 @@
-import { useState } from "react";
-import "./App.css";
-import SearchBar from "./components/searchBar";
+import { useState } from 'react';
+import './App.css';
+import DuoSearchPage from './components/DuoSearchPage';
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <div className="App">
-      <SearchBar />
+    <div className='App'>
+      <DuoSearchPage />
     </div>
   );
 }

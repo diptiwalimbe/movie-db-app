@@ -12,7 +12,7 @@ export default function MovieCard({ movie }) {
       </div>
       <div>
         <h4>{movie.title}</h4>
-        <button class='more-options-button'>&#x22EE;</button>
+        <button className='more-options-button'>&#x22EE;</button>
         {/* <div class='select-menu '>
           <select>
             <option value='option1'>Option 1</option>
