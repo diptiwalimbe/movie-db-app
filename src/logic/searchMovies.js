@@ -17,7 +17,8 @@ export async function getMoviesForDuo(
   person1,
   person2,
   sortField = SORT_FIELD_VOTE_AVERAGE,
-  sortDirection = SORT_DESCENDING
+  sortDirection = SORT_DESCENDING,
+  pageNumber = 1
 ) {
   const person1Result = await getPerson(person1);
   const person2Result = await getPerson(person2);
@@ -27,7 +28,9 @@ export async function getMoviesForDuo(
     try {
       const url = `${DISCOVER_MOVIE_URL}?with_cast=${person1Result.get(
         'id'
-      )},${person2Result.get('id')}&sort_by=${sortField}.${sortDirection}`;
+      )},${person2Result.get(
+        'id'
+      )}&sort_by=${sortField}.${sortDirection}&page=${pageNumber}`;
       const resp = await axios.get(url, config);
       moviesList = resp.data;
     } catch (e) {

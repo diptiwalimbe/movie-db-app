@@ -68,6 +68,7 @@ html, body{
   padding: 10px;
   background-color: #c08df3;
   display: flex;
+  border-bottom: 2px solid #fff;
 }
 .header nav{
   display: flex;
@@ -82,6 +83,10 @@ html, body{
 }
 .menu li{
   margin-right: 40px;
+  cursor: pointer;
+}
+.menu li:hover{
+  color: #222;
   cursor: pointer;
 }
 
