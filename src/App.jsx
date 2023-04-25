@@ -1,5 +1,5 @@
 import './App.css';
-import DuoSearchPage from './components/duoSearchPage';
+import DuoSearchPage from './components/DuoSearchPage';
 import Header from './components/header';
 
 function App() {

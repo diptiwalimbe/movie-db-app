@@ -4,6 +4,10 @@ A simple SPA using [The Movie DB API](https://developers.themoviedb.org/3) and [
 
 The user enters the names of any 2 actors and gets a list of the movies starring the duo.
 
+## Getting access to The Movie DB API
+
+Create an account on The Movie DB API website and store the API Read Access Token in a variable VITE_REACT_APP_TMDB_API_TOKEN=<your_token> in a .env file at the root of your project.
+
 ## Run the app in Development mode
 
 ### npm i

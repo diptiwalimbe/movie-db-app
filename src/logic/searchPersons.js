@@ -1,6 +1,11 @@
 import axios from 'axios';
 import { SEARCH_PERSON_URL, config } from '../constants/util';
 
+/**
+ *
+ * @param {string} personName
+ * @returns the person object if it exists
+ */
 export function getPersonFromLocalStorage(personName) {
   const storedPersons = localStorage.getItem('storedPersons');
   let person;
@@ -14,6 +19,10 @@ export function getPersonFromLocalStorage(personName) {
   return person;
 }
 
+/**
+ * Sets the person details object in local storage
+ * @param {object} personDetails
+ */
 export function setPersonInLocalStorage(personDetails) {
   const storedPersons = localStorage.getItem('storedPersons');
 
@@ -33,6 +42,11 @@ export function setPersonInLocalStorage(personDetails) {
   }
 }
 
+/**
+ *
+ * @param {string} person
+ * @returns object containing details of the actor
+ */
 export async function getPerson(person) {
   let personResult = getPersonFromLocalStorage(person);
 
@@ -63,6 +77,11 @@ export async function getPerson(person) {
   return personResult;
 }
 
+/**
+ *
+ * @param {string} personInput
+ * @returns an array of strings - suggestions for actor names
+ */
 export async function getPersonSuggestions(personInput) {
   const suggestions = new Set();
   //currently the API cannot filter by known for department

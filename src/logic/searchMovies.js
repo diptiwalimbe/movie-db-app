@@ -1,6 +1,5 @@
 import axios from 'axios';
 import {
-  BASE_API_URL,
   DISCOVER_MOVIE_URL,
   config,
   SORT_FIELD_VOTE_AVERAGE,
@@ -8,11 +7,15 @@ import {
 } from '../constants/util';
 import { getPerson } from './searchPersons';
 
-export async function getMoviesForPerson(personId) {
-  const url = `${BASE_API_URL}/person/${personId}/movie_credits`;
-  const resp = await axios.get(url, config);
-}
-
+/**
+ *
+ * @param {string} person1
+ * @param {string} person2
+ * @param {string} sortField
+ * @param {string} sortDirection
+ * @param {int} pageNumber
+ * @returns an object with list of movies, total_results and number of pages
+ */
 export async function getMoviesForDuo(
   person1,
   person2,
